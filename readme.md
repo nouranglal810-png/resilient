@@ -59,3 +59,92 @@ It captures heavy tails and crisis-like extreme events better than Gaussian mode
 ### 4️⃣ Risk Metric — 95% CVaR
 
 Conditional Value-at-Risk (Expected Shortfall):
+
+  CVaRα​=E[R∣R≤VaRα​]
+
+
+- Computed on terminal portfolio return distribution  
+- Measures expected loss in worst 5% scenarios  
+- Industry-standard institutional downside metric  
+
+---
+
+### 5️⃣ Optimization Framework
+
+- Constrained SLSQP optimizer  
+- Objective: minimize 95% CVaR  
+- Fully invested constraint (weights sum to 1)  
+- Risk-profile-dependent max weight bounds  
+- Deterministic seed for reproducibility  
+
+No dummy logic.  
+No hardcoded outputs.  
+All values are dynamically computed.
+
+---
+
+## 🏗 System Architecture
+Backend (FastAPI)
+│
+├── Data Layer
+│ ├── ETF download (yfinance)
+│ └── Log return computation
+│
+├── Risk Engine
+│ ├── Student-t Monte Carlo
+│ ├── Shrinkage covariance
+│ └── Terminal return simulation
+│
+├── Optimization Layer
+│ └── CVaR minimization
+│
+└── API Endpoint (/analyze)
+
+Frontend (HTML + JS)
+│
+├── Profile input page
+├── Dynamic API integration
+└── Risk dashboard visualization
+
+
+---
+
+## 🖥 Tech Stack
+
+### Backend
+- Python  
+- FastAPI  
+- NumPy  
+- SciPy  
+- Scikit-learn  
+- Pandas  
+- yfinance  
+
+### Frontend
+- HTML5  
+- CSS3  
+- Vanilla JavaScript  
+- GSAP  
+- Three.js  
+
+---
+
+## 📈 Example Output
+
+For a given profile:
+
+- Risk Level: Balanced  
+- Time Horizon: 5 Years  
+- Simulations: 8,000  
+
+The engine returns:
+
+- Optimized strategic asset allocation  
+- Estimated 95% worst-case tail loss  
+- Fully diversified portfolio weights  
+
+All results are computed in real-time using Monte Carlo simulation.
+
+---
+
+
