@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GLOB AI – AI-Driven Cybersecurity Assistant. Detect malicious links, get cybersecurity advice, and stay safe online.">
+    <title>🔐 GLOB AI – Cybersecurity Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Particles.js Background -->
+    <div id="particles-js"></div>
+
+    <!-- Cyber Grid Overlay -->
+    <div class="cyber-grid"></div>
+
+    <!-- Main Application Container -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 2L4 10V20C4 30 20 38 20 38C20 38 36 30 36 20V10L20 2Z" stroke="url(#shield-grad)" stroke-width="2.5" fill="none"/>
+                            <path d="M14 20L18 24L26 16" stroke="url(#check-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <defs>
+                                <linearGradient id="shield-grad" x1="4" y1="2" x2="36" y2="38">
+                                    <stop stop-color="#00f5ff"/>
+                                    <stop offset="1" stop-color="#7b2fff"/>
+                                </linearGradient>
+                                <linearGradient id="check-grad" x1="14" y1="16" x2="26" y2="24">
+                                    <stop stop-color="#00f5ff"/>
+                                    <stop offset="1" stop-color="#00ff88"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <h1>GLOB AI</h1>
+                        <span class="tagline">Cyber Shield Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-panel="chat" id="nav-chat">
+                    <span class="nav-icon">💬</span>
+                    <span class="nav-label">AI Chat</span>
+                </button>
+                <button class="nav-btn" data-panel="scanner" id="nav-scanner">
+                    <span class="nav-icon">🔗</span>
+                    <span class="nav-label">URL Scanner</span>
+                </button>
+                <button class="nav-btn" data-panel="reports" id="nav-reports">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-label">Reports</span>
+                </button>
+                <button class="nav-btn" data-panel="about" id="nav-about">
+                    <span class="nav-icon">ℹ️</span>
+                    <span class="nav-label">About</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="security-status">
+                    <div class="status-dot pulse"></div>
+                    <span>System Protected</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Mobile Header -->
+        <header class="mobile-header" id="mobile-header">
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span><span></span><span></span>
+            </button>
+            <h1 class="mobile-logo">GLOB AI</h1>
+            <div class="mobile-status">
+                <div class="status-dot pulse"></div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Chat Panel -->
+            <section class="panel active" id="panel-chat">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <h2>🤖 AI Cybersecurity Chat</h2>
+                        <p class="panel-subtitle">Ask anything about cybersecurity, threats, or online safety</p>
+                    </div>
+                    <button class="clear-chat-btn" id="clear-chat" title="Clear Chat">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z"/></svg>
+                    </button>
+                </div>
+
+                <div class="chat-container" id="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <!-- Welcome Message -->
+                        <div class="message bot-message welcome-message">
+                            <div class="message-avatar">🛡️</div>
+                            <div class="message-content">
+                                <div class="message-bubble">
+                                    <h3>Welcome to GLOB AI! 🔐</h3>
+                                    <p>I'm your AI-powered cybersecurity assistant. I can help you with:</p>
+                                    <ul>
+                                        <li>🔗 <strong>Link Safety Analysis</strong> – Paste any URL to check if it's safe</li>
+                                        <li>🛡️ <strong>Cybersecurity Q&A</strong> – Ask about threats, best practices, & more</li>
+                                        <li>📁 <strong>File Analysis</strong> – Upload files for security preview</li>
+                                        <li>🎤 <strong>Voice Input</strong> – Click the mic to speak your query</li>
+                                    </ul>
+                                    <p class="hint">Try asking: <em>"What is phishing?"</em> or paste a URL to scan!</p>
+                                </div>
+                                <span class="message-time">GLOB AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input Area -->
+                <div class="chat-input-area" id="chat-input-area">
+                    <div class="attachment-preview" id="attachment-preview" style="display:none;">
+                        <div class="attachment-item" id="attachment-item">
+                            <span class="attachment-name" id="attachment-name"></span>
+                            <button class="remove-attachment" id="remove-attachment">✕</button>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <button class="input-action-btn" id="attach-btn" title="Attach File">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/></svg>
+                        </button>
+                        <input type="file" id="file-input" hidden accept="image/*,video/*,.pdf,.doc,.docx,.txt">
+                        <textarea id="user-input" placeholder="Ask about cybersecurity or paste a URL to scan..." rows="1"></textarea>
+                        <button class="input-action-btn voice-btn" id="voice-btn" title="Voice Input">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                        </button>
+                        <button class="send-btn" id="send-btn" title="Send Message">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- URL Scanner Panel -->
+            <section class="panel" id="panel-scanner">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <h2>🔗 URL Safety Scanner</h2>
+                        <p class="panel-subtitle">Analyze any URL for phishing, malware, and security threats</p>
+                    </div>
+                </div>
+
+                <div class="scanner-content">
+                    <div class="scanner-card glass-card">
+                        <div class="scanner-input-group">
+                            <div class="scanner-icon">🌐</div>
+                            <input type="url" id="url-input" placeholder="Enter URL to scan (e.g., https://example.com)" class="scanner-url-input">
+                            <button class="scan-btn" id="scan-btn">
+                                <span class="scan-btn-text">Scan URL</span>
+                                <div class="scan-loader" style="display:none;"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Scan Result Area -->
+                    <div class="scan-result" id="scan-result" style="display:none;">
+                        <div class="result-card glass-card" id="result-card">
+                            <div class="result-header" id="result-header">
+                                <div class="result-icon" id="result-icon"></div>
+                                <div class="result-info">
+                                    <h3 id="result-verdict"></h3>
+                                    <p id="result-url" class="result-url-text"></p>
+                                </div>
+                            </div>
+                            <div class="result-details" id="result-details">
+                                <div class="detail-grid" id="detail-grid"></div>
+                            </div>
+                            <div class="result-explanation" id="result-explanation"></div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Scans -->
+                    <div class="recent-scans glass-card">
+                        <h3>📋 Recent Scans</h3>
+                        <div class="scans-list" id="scans-list">
+                            <div class="empty-state">
+                                <span class="empty-icon">🔍</span>
+                                <p>No URLs scanned yet. Enter a URL above to get started.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Panel -->
+            <section class="panel" id="panel-reports">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <h2>📊 Security Reports</h2>
+                        <p class="panel-subtitle">View your threat analysis history and security insights</p>
+                    </div>
+                </div>
+
+                <div class="reports-content">
+                    <div class="stats-grid">
+                        <div class="stat-card glass-card">
+                            <div class="stat-icon safe-icon">✅</div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="safe-count">0</span>
+                                <span class="stat-label">Safe Links</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-icon suspicious-icon">⚠️</div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="suspicious-count">0</span>
+                                <span class="stat-label">Suspicious</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-icon unsafe-icon">🚨</div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="unsafe-count">0</span>
+                                <span class="stat-label">Unsafe</span>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <div class="stat-icon total-icon">📊</div>
+                            <div class="stat-info">
+                                <span class="stat-number" id="total-count">0</span>
+                                <span class="stat-label">Total Scans</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="report-history glass-card">
+                        <h3>🕐 Scan History</h3>
+                        <div class="history-list" id="history-list">
+                            <div class="empty-state">
+                                <span class="empty-icon">📋</span>
+                                <p>No scan history yet. Start scanning URLs to see reports here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Panel -->
+            <section class="panel" id="panel-about">
+                <div class="panel-header">
+                    <div class="panel-title">
+                        <h2>ℹ️ About GLOB AI</h2>
+                        <p class="panel-subtitle">AI-Driven Cybersecurity Assistant</p>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-hero glass-card">
+                        <div class="about-logo-large">
+                            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M40 4L8 20V40C8 60 40 76 40 76C40 76 72 60 72 40V20L40 4Z" stroke="url(#about-shield)" stroke-width="3" fill="rgba(0,245,255,0.05)"/>
+                                <path d="M28 40L36 48L52 32" stroke="url(#about-check)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <defs>
+                                    <linearGradient id="about-shield" x1="8" y1="4" x2="72" y2="76">
+                                        <stop stop-color="#00f5ff"/>
+                                        <stop offset="1" stop-color="#7b2fff"/>
+                                    </linearGradient>
+                                    <linearGradient id="about-check" x1="28" y1="32" x2="52" y2="48">
+                                        <stop stop-color="#00f5ff"/>
+                                        <stop offset="1" stop-color="#00ff88"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <h2>GLOB AI</h2>
+                        <p class="about-tagline">Your AI-Powered Cybersecurity Guardian</p>
+                        <p class="about-description">GLOB AI is an AI-powered cybersecurity assistant designed to help users identify unsafe or malicious links and understand cybersecurity risks through a conversational interface. The project combines AI-based question answering with real-time URL safety analysis, presented in a secure, user-friendly chat environment.</p>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card glass-card">
+                            <span class="feature-icon">🤖</span>
+                            <h4>AI Chatbot</h4>
+                            <p>Answers cybersecurity questions with educational explanations to improve cyber awareness.</p>
+                        </div>
+                        <div class="feature-card glass-card">
+                            <span class="feature-icon">🔗</span>
+                            <h4>Link Detection</h4>
+                            <p>Automatically detects and analyzes URLs for phishing, malware, and security threats.</p>
+                        </div>
+                        <div class="feature-card glass-card">
+                            <span class="feature-icon">📁</span>
+                            <h4>File Support</h4>
+                            <p>Image, video, and file attachment support with secure preview functionality.</p>
+                        </div>
+                        <div class="feature-card glass-card">
+                            <span class="feature-icon">🎤</span>
+                            <h4>Voice Input</h4>
+                            <p>Speech-to-text support for hands-free interaction and improved accessibility.</p>
+                        </div>
+                        <div class="feature-card glass-card">
+                            <span class="feature-icon">🎨</span>
+                            <h4>Modern UI</h4>
+                            <p>Glassmorphism-based design with animated backgrounds and responsive layouts.</p>
+                        </div>
+                        <div class="feature-card glass-card">
+                            <span class="feature-icon">🔐</span>
+                            <h4>Secure Design</h4>
+                            <p>Input sanitization, safe rendering, and clear threat classification without auto-redirection.</p>
+                        </div>
+                    </div>
+
+                    <div class="tech-stack glass-card">
+                        <h3>🛠️ Tech Stack</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript ES6+</span>
+                            <span class="tech-tag">Particles.js</span>
+                            <span class="tech-tag">Web Speech API</span>
+                            <span class="tech-tag">Google Fonts</span>
+                            <span class="tech-tag">Glassmorphism</span>
+                            <span class="tech-tag">AI APIs</span>
+                        </div>
+                    </div>
+
+                    <div class="developer-card glass-card">
+                        <h3>👨‍💻 Developer</h3>
+                        <p>Developed by <strong>Norang Lal</strong></p>
+                        <a href="https://github.com/nouranglal810-png" target="_blank" class="github-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            GitHub Profile
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
